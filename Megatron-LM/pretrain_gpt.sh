@@ -1,13 +1,13 @@
 #!/bin/bash
 
-NODE_RANK=$1
-MASTER_ADDR=$2
+NODE_RANK=$2
+MASTER_ADDR=$1
 
 export CUDA_DEVICE_MAX_CONNECTIONS=1
 
 GPUS_PER_NODE=4
 # Change for multinode config
-MASTER_PORT=6000
+MASTER_PORT=6002
 NNODES=1
 WORLD_SIZE=$(($GPUS_PER_NODE*$NNODES))
 
@@ -25,15 +25,15 @@ DISTRIBUTED_ARGS="
 "
 
 GPT_ARGS="
-    --tensor-model-parallel-size 1 \
-    --pipeline-model-parallel-size 4 \
+    --tensor-model-parallel-size 4 \
+    --pipeline-model-parallel-size 1 \
     --num-layers 48 \
     --hidden-size 1600 \
     --num-attention-heads 16 \
     --seq-length 1024 \
     --max-position-embeddings 1024 \
-    --micro-batch-size 1 \
-    --global-batch-size 1 \
+    --micro-batch-size 4 \
+    --global-batch-size 4 \
     --lr 0.00015 \
     --train-iters 100 \
     --lr-decay-iters 320000 \
@@ -64,7 +64,5 @@ torchrun $DISTRIBUTED_ARGS pretrain_gpt.py \
     $GPT_ARGS \
     $DATA_ARGS \
     $OUTPUT_ARGS \
-    --distributed-backend nccl \
-    --save $CHECKPOINT_PATH \
-    --load $CHECKPOINT_PATH
+    --distributed-backend nccl
 
