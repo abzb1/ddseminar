@@ -1,8 +1,17 @@
-Copyright 2023 Parallel Software Design LAB, University of Seoul.
-All rights reserved.
+Copyright 2023 Parallel Software Design LAB, University of Seoul
 
-Redistribution and use in source and binary forms, with or without modification, are not permitted. 
+All rights reserved for the portions of the code developed by Parallel Software Design LAB, University of Seoul. This includes implementations of data parallelism and pipeline parallelism. Other components, specifically related to Megatron-LM for 3D parallelism, might be owned by their respective copyright holders and should be treated according to their specific licenses.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Terms:
 
-Commercial use and distribution of the source and derived code are not allowed under this license. Any use, reproduction, or distribution of this software without the author's permission is prohibited.
+1. **Educational Use**: This repository is intended primarily for educational purposes to demonstrate the implementation of Data Parallelism, Pipeline Parallelism, and usage of Megatron-LM for 3D Parallelism.
+
+2. **Prohibited Uses**: 
+    - **Commercial Use**: Direct commercial use or any form of monetization of the source code or any derived version (including any form of derivative works or modifications) developed by Parallel Software Design LAB, University of Seoul is strictly prohibited.
+    - **Distribution**: Redistribution, sale, or sub-licensing of the source code developed by Parallel Software Design LAB, University of Seoul in any form is strictly prohibited.
+
+3. **Disclaimer**: THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL Parallel Software Design LAB, University of Seoul OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Any violation of this license may subject the violator to legal action. If you wish to use this software outside of the terms of this license, you must obtain permission from the copyright holder.
+
+It is the user's responsibility to adhere to the licensing terms of all included components. This includes the components not developed by Parallel Software Design LAB, University of Seoul.
