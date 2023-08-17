@@ -16,7 +16,6 @@ import torchtext.functional as F
 from torch.optim import AdamW
 import argparse
 from torch.utils.data import DataLoader
-from torch.utils.data import DistributedSampler
 
 # parser
 parser = argparse.ArgumentParser(description="XLM-RoBerta")
