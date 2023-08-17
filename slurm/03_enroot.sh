@@ -7,7 +7,7 @@
 #SBATCH -e ./_err/%j.sbatch.%N.err
 #=============================================================
 GRES="gpu:a10:1"                   
-. 04_conf.sh
+. 03_conf.sh
 #==============================================================
 mkdir -p ./_log/$SLURM_JOB_ID      
 
@@ -40,7 +40,7 @@ SRUN_SCRIPT=$(cat <<EOF
                 --rw \
                 -m $HOME/ddseminar:/ddseminar \
                 $CONTAINER_NAME \
-                python /ddseminar/slurm/04_bert.py
+                python /ddseminar/slurm/03_train.py
 EOF
 )
 
