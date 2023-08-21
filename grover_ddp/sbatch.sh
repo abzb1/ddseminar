@@ -3,7 +3,6 @@
 #SBATCH --partition=gpu2
 #SBATCH --gres=gpu:a10:4
 #SBATCH --cpus-per-task=56
-#SBATCH --nodelist=n075
 #SBATCH -o ./_out/%j.sbatch.%N.out
 #SBATCH -e ./_err/%j.sbatch.%N.err
 #=============================================================
