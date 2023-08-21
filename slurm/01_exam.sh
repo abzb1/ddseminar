@@ -1,7 +1,7 @@
 #!/bin/bash                 
 #SBATCH --nodes=1           
 #SBATCH --partition=gpu2    
-##SBATCH --gres=gpu:a10:1   
+#SBATCH --gres=gpu:a10:1   
 #SBATCH --cpus-per-task=14  
 #SBATCH -o ./_out/%j.%N.out 
 #SBATCH -e ./_err/%j.%N.err 

@@ -93,19 +93,18 @@ def apply_transform(x):
     return text_transform(x[0]), x[1]
 
 # Getting train data
-train_datapipe   = train_datapipe.map(apply_transform)
-train_datapipe   = train_datapipe.batch(batch_size)
-train_datapipe   = train_datapipe.rows2columnar(["token_ids", "target"])
+train_datapipe = train_datapipe.map(apply_transform)
+train_datapipe = train_datapipe.batch(batch_size)
+train_datapipe = train_datapipe.rows2columnar(["token_ids", "target"])
 train_datapipe.sharding_filter()
 torch.utils.data.graph_settings.apply_sharding(train_datapipe, world_size, rank)
-# train_dataloader = DataLoader2(train_datapipe, reading_service=rs)
-
+# print(f"train_datapipe: {len(train_datapipe)}")
 
 # Getting test data
-dev_datapipe     = dev_datapipe.map(apply_transform)
-dev_datapipe     = dev_datapipe.batch(batch_size)
-dev_datapipe     = dev_datapipe.rows2columnar(["token_ids", "target"])
-dev_dataloader   = DataLoader(dev_datapipe, batch_size=None)
+dev_datapipe = dev_datapipe.map(apply_transform)
+dev_datapipe = dev_datapipe.batch(batch_size)
+dev_datapipe = dev_datapipe.rows2columnar(["token_ids", "target"])
+dev_dataloader = DataLoader(dev_datapipe, batch_size=None)
 
 # model
 classifier_head = RobertaClassificationHead(num_classes=num_classes, input_dim=input_dim)

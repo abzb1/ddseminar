@@ -11,5 +11,6 @@ for i in $( ps -ef | grep python | grep bert | awk '{print $2}'); do kill -9 $i;
 
 for i in $( ps -ef | grep python | grep bert | awk '{print $2}'); do kill -9 $i; done
 
+for i in $( ps -ef | grep python | grep grover | awk '{print $2}'); do kill -9 $i; done
 
 nvidia-smi

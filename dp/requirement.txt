@@ -1,0 +1,1 @@
+pip install rdkit boost descriptastorus tensorboard rdkit readline
