@@ -1,6 +1,20 @@
 # GROVER 모델의 DDP 수행
 
-`grover_ddp` 폴더로 들어가 로그를 담을 디렉토리 생성(`_log`, `_err`, `_out`)
+## 사전 준비사항
+
+1. `megatron-latest.sqsh` 컨테이너 재다운로드    
+   `megatron-latest.sqsh`: GROVER 모델을 학습할 때 필요한 추가 패키지가 설치된 컨테이너    
+   해당 컨테이너를 `/scratch/enroot/megatron-latest.sqsh` 경로에 두었음(이전 컨테이너와 동일한 경로, 파일이름)
+   
+    ```
+    cp /scratch/enroot/megatron-latest.sqsh ~/ddseminar/image
+    ```
+2. `grover_large.pt`: 사전학습된 GROVER 모델을 다운로드
+   
+   ```
+   cp /scratch/enroot/grover_large.pt ~/ddseminar/grover_ddp
+   ``` 
+3. `grover_ddp` 폴더로 들어가 로그를 담을 디렉토리 생성(`_log`, `_err`, `_out`)
    ```
    cd ~/ddseminar/grover_ddp
    mkdir ~/ddseminar/grover_ddp/_log
