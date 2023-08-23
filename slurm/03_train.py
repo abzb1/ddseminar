@@ -19,7 +19,7 @@ from torch.utils.data import DataLoader
 
 # parser
 parser = argparse.ArgumentParser(description="XLM-RoBerta")
-parser.add_argument("-e", "--epochs", default=1, type=int, metavar="N")
+parser.add_argument("-e", "--epochs", default=5, type=int, metavar="N")
 parser.add_argument("-b", "--batch-size", default=32,type=int, metavar="N")
 parser.add_argument("-nc", "--num-classes", default=2,type=int, metavar="N")
 parser.add_argument("-d", "--input-dim", default=768,type=int, metavar="N")
@@ -64,13 +64,13 @@ def apply_transform(x):
 train_datapipe = train_datapipe.map(apply_transform)
 train_datapipe = train_datapipe.batch(batch_size)
 train_datapipe = train_datapipe.rows2columnar(["token_ids", "target"])
-train_dataloader = DataLoader(train_datapipe, batch_size=None)
+train_dataloader = DataLoader(train_datapipe)
 
 # Getting dev? data
 dev_datapipe = dev_datapipe.map(apply_transform)
 dev_datapipe = dev_datapipe.batch(batch_size)
 dev_datapipe = dev_datapipe.rows2columnar(["token_ids", "target"])
-dev_dataloader = DataLoader(dev_datapipe, batch_size=None)
+dev_dataloader = DataLoader(dev_datapipe)
 
 # model
 classifier_head = RobertaClassificationHead(num_classes=num_classes, input_dim=input_dim)
@@ -133,4 +133,4 @@ for e in range(num_epochs):
     e_et = time.time()
     et_time = e_et - e_st
     loss, accuracy = evaluate()
-    print("Epoch = [{}], t_time[{}], loss = [{}], accuracy = [{}]".format(e, et_time, loss, accuracy))
+    print("Epoch = [{}], t_time[{}]".format(e, et_time))
