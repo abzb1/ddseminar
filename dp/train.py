@@ -148,6 +148,8 @@ def evaluate():
 
 t_time = 0.0
 et_time = 0.0
+dev_loss = 0.0
+dev_accuracy = 0.0
 for e in range(num_epochs):
     e_st = time.time()
     for i, batch in enumerate(train_datapipe):
@@ -165,4 +167,5 @@ for e in range(num_epochs):
             print_rank_0(f"training {i:10d}th batch, t_time: {t_time:.4f}s, loss: {loss:.4f}")
     e_et = time.time()
     et_time = e_et - e_st
-    print_rank_0("Epoch = [{}], t_time[{}]".format(e, et_time))
+    dev_loss, dev_accuracy = evaluate()
+    print_rank_0("Epoch = [{}], t_time[{}], loss[{}], accuracy[{}]".format(e, et_time, dev_loss, dev_accuracy))
