@@ -96,9 +96,10 @@ def apply_transform(x):
 train_datapipe = train_datapipe.map(apply_transform)
 train_datapipe = train_datapipe.batch(batch_size)
 train_datapipe = train_datapipe.rows2columnar(["token_ids", "target"])
-train_dataloader = train_datapipe.sharding_filter()
+train_datapipe = train_datapipe.sharding_filter()
 torch.utils.data.graph_settings.apply_sharding(train_datapipe, world_size, rank)
-# print(f"train_datapipe: {len(train_datapipe)}")
+train_datapipe = train_datapipe.fullsync()
+
 
 # Getting test data
 dev_datapipe = dev_datapipe.map(apply_transform)
@@ -150,6 +151,7 @@ t_time = 0.0
 et_time = 0.0
 dev_loss = 0.0
 dev_accuracy = 0.0
+
 for e in range(num_epochs):
     e_st = time.time()
     for i, batch in enumerate(train_datapipe):

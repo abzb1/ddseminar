@@ -64,13 +64,13 @@ def apply_transform(x):
 train_datapipe = train_datapipe.map(apply_transform)
 train_datapipe = train_datapipe.batch(batch_size)
 train_datapipe = train_datapipe.rows2columnar(["token_ids", "target"])
-train_dataloader = DataLoader(train_datapipe)
+train_dataloader = DataLoader(train_datapipe, batch_size=None)
 
-# Getting dev? data
+# Getting dev data
 dev_datapipe = dev_datapipe.map(apply_transform)
 dev_datapipe = dev_datapipe.batch(batch_size)
 dev_datapipe = dev_datapipe.rows2columnar(["token_ids", "target"])
-dev_dataloader = DataLoader(dev_datapipe)
+dev_dataloader = DataLoader(dev_datapipe, batch_size=None)
 
 # model
 classifier_head = RobertaClassificationHead(num_classes=num_classes, input_dim=input_dim)
@@ -133,4 +133,4 @@ for e in range(num_epochs):
     e_et = time.time()
     et_time = e_et - e_st
     loss, accuracy = evaluate()
-    print("Epoch = [{}], t_time[{}]".format(e, et_time))
+    print(f"Epoch = [{e}], t_time[{et_time}], loss[{loss:.4f}], accuracy[{accuracy:.4f}]")

@@ -6,7 +6,7 @@
 #SBATCH -o ./_out/%j.sbatch.%N.out
 #SBATCH -e ./_err/%j.sbatch.%N.err
 #=============================================================
-GRES="gpu:a10:4"                   
+GRES="gpu:a10:4"                 
 . conf.sh
 #==============================================================
 mkdir -p ./_log/$SLURM_JOB_ID

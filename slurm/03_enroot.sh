@@ -2,7 +2,7 @@
 #SBATCH --nodes=1
 #SBATCH --partition=gpu2
 #SBATCH --gres=gpu:a10:1
-#SBATCH --cpus-per-task=14
+#SBATCH --cpus-per-task=56
 #SBATCH -o ./_out/%j.sbatch.%N.out
 #SBATCH -e ./_err/%j.sbatch.%N.err
 #=============================================================
@@ -40,13 +40,13 @@ SRUN_SCRIPT=$(cat <<EOF
                 --rw \
                 -m $HOME/ddseminar:/ddseminar \
                 $CONTAINER_NAME \
-                python /ddseminar/slurm/03_train.py
+                python /ddseminar/slurm/03_train.py -e 5
 EOF
 )
 
 srun --partition=$SLURM_JOB_PARTITION \
       --gres=$GRES \
-      --cpus-per-task=14 \
+      --cpus-per-task=56 \
       -o ./_log/%j/%N.out \
       -e ./_log/%j/%N.err \
       bash -c "$SRUN_SCRIPT"

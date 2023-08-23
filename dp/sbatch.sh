@@ -2,8 +2,7 @@
 #SBATCH --nodes=2
 #SBATCH --partition=gpu2
 #SBATCH --gres=gpu:a10:4
-#SBATCH --cpus-per-task=14
-#SBATCH --nodelist=n075,n076
+#SBATCH --cpus-per-task=28
 #SBATCH -o ./_out/%j.sbatch.%N.out
 #SBATCH -e ./_err/%j.sbatch.%N.err
 #=============================================================
@@ -22,6 +21,10 @@ echo MASTER_ADDR:$MASTER_ADDR
 echo CONTAINER_PATH:$CONTAINER_PATH
 
 INIT_CONTAINER_SCRIPT=$(cat <<EOF
+
+    if $RELOAD_CONTAINER ; then
+        rm -rf $CONTAINER_PATH
+    fi
 
     if [ -d "$CONTAINER_PATH" ] ; then 
         echo "container exist";
@@ -68,7 +71,7 @@ EOF
 
 srun --partition=$SLURM_JOB_PARTITION \
       --gres=$GRES \
-      --cpus-per-task=14 \
+      --cpus-per-task=28 \
       -o ./_log/%j/%N.out \
       -e ./_log/%j/%N.err \
       bash -c "$SRUN_SCRIPT"
