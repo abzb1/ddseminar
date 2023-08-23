@@ -96,7 +96,7 @@ def apply_transform(x):
 train_datapipe = train_datapipe.map(apply_transform)
 train_datapipe = train_datapipe.batch(batch_size)
 train_datapipe = train_datapipe.rows2columnar(["token_ids", "target"])
-train_datapipe.sharding_filter()
+train_dataloader = train_datapipe.sharding_filter()
 torch.utils.data.graph_settings.apply_sharding(train_datapipe, world_size, rank)
 # print(f"train_datapipe: {len(train_datapipe)}")
 
